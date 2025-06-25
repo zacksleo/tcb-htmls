@@ -22,5 +22,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           repository: zacksleo/tcb-htmls
-          workflow: build-and-deploy.yml
+          workflow: deploy.yml
           ref: main

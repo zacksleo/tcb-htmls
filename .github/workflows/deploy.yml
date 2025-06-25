@@ -7,6 +7,20 @@ on:
       - main
 
 jobs:
+
+  import-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main repo
+        uses: actions/checkout@v3
+
+      - name: Clone sub repo and copy HTML
+        run: |
+          git clone https://github.com/fkvjhxiao/tcb-html-1.git subrepo
+          mkdir -p dist
+          cp subrepo/*.html dist/
+
   build-and-deploy:
     runs-on: ubuntu-latest
 

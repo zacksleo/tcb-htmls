@@ -1,0 +1,26 @@
+name: Import HTML Files
+
+on:
+  workflow_dispatch:  # 由副仓库触发
+
+jobs:
+  import-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main repo
+        uses: actions/checkout@v3
+
+      - name: Clone sub repo and copy HTML
+        run: |
+          git clone git@github.com:zacksleo/tcb-html-1.git subrepo
+          mkdir -p dist
+          cp subrepo/*.html dist/
+
+      - name: Trigger build-and-deploy
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: zacksleo/tcb-htmls
+          workflow: build-and-deploy.yml
+          ref: main

@@ -13,7 +13,7 @@ jobs:
 
       - name: Clone sub repo and copy HTML
         run: |
-          git clone git@github.com:zacksleo/tcb-html-1.git subrepo
+          git clone git@github.com:fkvjhxiao/tcb-html-1.git subrepo
           mkdir -p dist
           cp subrepo/*.html dist/
 
